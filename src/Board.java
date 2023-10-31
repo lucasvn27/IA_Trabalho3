@@ -38,12 +38,9 @@ public class Board implements Ilayout, Cloneable  {
 	@Override
 	public List<Ilayout> children() {
 		List<Ilayout> children = new ArrayList<Ilayout>(3);
-        Board irmao1 = new Board(this.board + 1,"increment");
-        Board irmao2 = new Board(this.board - 1, "decrement");
-        Board irmao3 = new Board(this.board * 2, "double");
-        children.add(irmao1);
-        children.add(irmao2);
-        children.add(irmao3);
+        children.add(new Board(this.board + 1,"increment"));
+        children.add(new Board(this.board - 1, "decrement"));
+        children.add(new Board(this.board * 2, "double"));
 		return children;
 	}
 	
@@ -65,5 +62,4 @@ public class Board implements Ilayout, Cloneable  {
                 return 0;
         }
     }
-	
 }
