@@ -43,6 +43,16 @@ public class Board implements Ilayout, Cloneable  {
         children.add(new Board(this.board * 2, "double"));
 		return children;
 	}
+
+    @Override
+    public double estimateCost(Ilayout goal) {
+        if (goal instanceof Board) {
+            int goalValue = ((Board) goal).board;
+            return Math.abs(goalValue - board);
+        }
+        return Double.MAX_VALUE;
+    }
+
 	
 	@Override
 	public boolean isGoal(Ilayout l) {

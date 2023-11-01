@@ -4,14 +4,14 @@ public class Client {
 	
 	public static void main (String [] args) throws Exception {
 		Scanner sc = new Scanner(System.in);
-		BestFirst s = new BestFirst();
+		AStar s = new AStar();
 		
 		int valorInicial = sc.nextInt();
 		int goalTemp = valorInicial * 3;
 		
-		Iterator<BestFirst.State> it = s.solve(new Board(valorInicial, "nada"), new Board(goalTemp,"nada"));
+		Iterator<AStar.State> it = s.solve(new Board(valorInicial, "nada"), new Board(goalTemp,"nada"));
 		while (it.hasNext()) {
-			BestFirst.State i = it.next();
+			AStar.State i = it.next();
 			System.out.println(i);
 			if (!it.hasNext()) {
 				System.out.println();
