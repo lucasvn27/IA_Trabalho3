@@ -6,13 +6,13 @@ public class Board implements Ilayout, Cloneable  {
 	private int board;
     private String operacao;
 	
-	public Board(int str, String operacao) throws IllegalStateException {
+	public Board(int str, String operacao) throws IllegalStateException { //nao muda
 		board = str;
         this.operacao = operacao;
 	}
 	
 	@Override
-    public int hashCode() {
+    public int hashCode() { //nao muda
         final int prime = 31;
         int result = 1;
         result = prime * result + board;
@@ -20,7 +20,7 @@ public class Board implements Ilayout, Cloneable  {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(Object obj) { //nao muda
         if (this == obj)
             return true;
         if (obj == null)
@@ -31,12 +31,12 @@ public class Board implements Ilayout, Cloneable  {
         return this.board == other.board;
     }
 	
-	public String toString() {
+	public String toString() { //nao muda
 		return Integer.toString(board);
 	}
 
 	@Override
-	public List<Ilayout> children() {
+	public List<Ilayout> children() { //nao muda
 		List<Ilayout> children = new ArrayList<Ilayout>(3);
         children.add(new Board(this.board + 1,"increment"));
         children.add(new Board(this.board - 1, "decrement"));
@@ -45,22 +45,19 @@ public class Board implements Ilayout, Cloneable  {
 	}
 
     @Override
-    public double estimateCost(Ilayout goal) {
-        if (goal instanceof Board) {
-            int goalValue = ((Board) goal).board;
-            return Math.abs(goalValue - board);
-        }
-        return Double.MAX_VALUE;
+    public double estimateCost(Ilayout goal) { //a fazer bem as contas
+        int goalValue = ((Board)goal).board;
+        int custo = Math.abs(goalValue - board);
+        return custo;
     }
-
 	
 	@Override
-	public boolean isGoal(Ilayout l) {
+	public boolean isGoal(Ilayout l) { //nao muda
 		return l.equals(this);
 	}
 
     @Override
-    public double getG() {
+    public double getG() { //nao muda
         switch (operacao) {
             case "increment":
                 return 1;

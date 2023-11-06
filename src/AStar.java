@@ -16,6 +16,12 @@ public class AStar {
                 g = 0.0;
             }
             h = l.estimateCost(goal);
+            System.out.println("nó: " + layout);
+            System.out.println("heuristica: " + h);
+            System.out.println("custo geracao: " + g);
+            double test = h+g;
+            System.out.println("Custo final: " + test);
+            System.out.println("-----------------------------");
         }
 
         public String toString() {
@@ -27,7 +33,8 @@ public class AStar {
         }
 
         public double getF() {
-            return g + h;
+            double valueFinal = g+h;
+            return valueFinal;
         }
     }
 
@@ -67,7 +74,7 @@ public class AStar {
         List<State> sucs;
         while (!valorInicial.isGoal(goal)) {
             if (abertos.isEmpty()) {
-                return null; // No solution
+                return null;
             }
             actual = abertos.poll();
             if (actual.layout.isGoal(goal)) {

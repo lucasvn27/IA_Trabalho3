@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Client {
 	
-	public static void main (String [] args) throws Exception {
+	public static void main (String [] args) throws Exception { //nao muda
 		Scanner sc = new Scanner(System.in);
 		AStar s = new AStar();
 		
