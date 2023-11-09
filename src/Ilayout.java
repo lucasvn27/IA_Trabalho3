@@ -18,5 +18,7 @@ public interface Ilayout {
 	*/
 	public double getG();
 
+	int getBoard();
+
 	public double estimateCost(Ilayout goal);
 }

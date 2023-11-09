@@ -16,12 +16,7 @@ public class AStar {
                 g = 0.0;
             }
             h = l.estimateCost(goal);
-            System.out.println("nó: " + layout);
-            System.out.println("heuristica: " + h);
-            System.out.println("custo geracao: " + g);
-            double test = h+g;
-            System.out.println("Custo final: " + test);
-            System.out.println("-----------------------------");
+
         }
 
         public String toString() {
@@ -39,7 +34,7 @@ public class AStar {
     }
 
     protected PriorityQueue<State> abertos;
-    private Set<Ilayout> fechados;
+    private HashMap<Integer, Double> fechados;
 
     private State actual;
 
@@ -69,7 +64,7 @@ public class AStar {
     final public Iterator<State> solve(Ilayout valorInicial, Ilayout goal) {
         State inicial = new State(valorInicial, null, goal);
         abertos = new PriorityQueue<>(10, (s1, s2) -> (int) Math.signum(s1.getF() - s2.getF()));
-        fechados = new HashSet<>();
+        fechados = new HashMap<>();
         abertos.add(inicial);
         List<State> sucs;
         while (!valorInicial.isGoal(goal)) {
@@ -81,9 +76,9 @@ public class AStar {
                 return buildPath(actual);
             } else {
                 sucs = sucessores(actual, goal);
-                fechados.add(actual.layout);
+                fechados.put(actual.layout.getBoard(), actual.getF());
                 for (State sucessor : sucs) {
-                    if (!fechados.contains(sucessor.layout)) {
+                    if (!fechados.containsKey(sucessor.layout.getBoard())) {
                         abertos.add(sucessor);
                     }
                 }

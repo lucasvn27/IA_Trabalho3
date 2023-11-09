@@ -57,6 +57,11 @@ public class Board implements Ilayout, Cloneable  {
 	}
 
     @Override
+    public int getBoard() {
+        return board;
+    }
+
+    @Override
     public double getG() { //nao muda
         switch (operacao) {
             case "increment":
