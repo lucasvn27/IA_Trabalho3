@@ -6,7 +6,7 @@ public class Board implements Ilayout, Cloneable  {
 	private int board;
     private String operacao;
 	
-	public Board(int str, String operacao) throws IllegalStateException { //nao muda
+	public Board(int str, String operacao) throws IllegalStateException {
 		board = str;
         this.operacao = operacao;
 	}
@@ -47,7 +47,12 @@ public class Board implements Ilayout, Cloneable  {
     @Override
     public double estimateCost(Ilayout goal) { //a fazer bem as contas
         int goalValue = ((Board)goal).board;
-        int custo = Math.abs(goalValue - board);
+        int custo = 0;
+        if(this.board >= 0){
+            custo = Math.abs((goalValue/2) - board);
+        }else{
+            custo = Math.abs((goalValue/4) - board);
+        }
         return custo;
     }
 	

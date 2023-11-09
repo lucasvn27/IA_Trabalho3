@@ -80,6 +80,12 @@ public class AStar {
                 for (State sucessor : sucs) {
                     if (!fechados.containsKey(sucessor.layout.getBoard())) {
                         abertos.add(sucessor);
+                    } else {
+                        double existingF = fechados.get(sucessor.layout.getBoard());
+                        if (sucessor.getF() < existingF) {
+                            fechados.put(sucessor.layout.getBoard(), sucessor.getF());
+                            abertos.add(sucessor);
+                        }
                     }
                 }
             }
