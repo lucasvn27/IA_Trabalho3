@@ -47,9 +47,9 @@ public class Board implements Ilayout, Cloneable  {
     @Override
     public double estimateCost(Ilayout goal) { //a fazer bem as contas
         int goalValue = ((Board)goal).board;
-        int custo = 0;
+        double custo = 0;
         if(this.board >= 0){
-            custo = Math.abs((goalValue/2) - board);
+            custo = Math.min(Math.abs((goalValue/2) - board), Math.abs(goalValue - board));
         }else{
             custo = Math.abs((goalValue/4) - board);
         }

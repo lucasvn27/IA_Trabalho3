@@ -28,8 +28,7 @@ public class AStar {
         }
 
         public double getF() {
-            double valueFinal = g+h;
-            return valueFinal;
+            return g+h;
         }
     }
 
