@@ -36,6 +36,8 @@ public class AStar {
     private HashMap<Integer, Double> fechados;
 
     private State actual;
+    private int generatedNodesCount;
+    private int expandedNodesCount;
 
     final private List<State> sucessores(State n, Ilayout goal) {
         List<State> sucs = new ArrayList<>();
@@ -75,6 +77,8 @@ public class AStar {
                 return buildPath(actual);
             } else {
                 sucs = sucessores(actual, goal);
+                expandedNodesCount++;
+                generatedNodesCount += sucs.size();
                 fechados.put(actual.layout.getBoard(), actual.getF());
                 for (State sucessor : sucs) {
                     if (!fechados.containsKey(sucessor.layout.getBoard())) {
@@ -90,5 +94,13 @@ public class AStar {
             }
         }
         return abertos.iterator();
+    }
+
+    public int getGeneratedNodesCount() {
+        return generatedNodesCount;
+    }
+
+    public int getExpandedNodesCount() {
+        return expandedNodesCount;
     }
 }
