@@ -9,7 +9,7 @@ O objetivo do problema é determinar o custo mínimo para transformar um número
 - Subtrair 1 (custo 2)
 - Multiplicar por 2 (custo 3)
 
-Por exemplo, para \( x = 3 \), o triplo é \( 9 \). A sequência de operações com o menor custo para transformar \( 3 \) em \( 9 \) seria multiplicar por 2 duas vezes (custo total: \( 6 \)).
+Por exemplo, para \( x = 3 \), o triplo é \( 9 \). A sequência de operações com o menor custo para transformar \( 3 \) em \( 9 \) seria somar um, multiplicar por 2 e voltar a somar por 1 (custo total: \( 5 \)).
 
 ## Implementação do Algoritmo A*
 
